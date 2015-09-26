@@ -1,0 +1,30 @@
+{
+  "name": "node-module-advent-calendar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify www/demo.js -o www/bundle.js",
+    "deploy": "git push origin master && gh-pages-deploy",
+    "watch": "watchify www/demo.js -o www/bundle.js --debug --verbose",
+    "tweet": "node bot.js"
+  },
+  "devDependencies": {
+    "browserify": "^11.0.1",
+    "watchify": "^3.3.1",
+    "gh-pages-deploy": "^0.3.0"
+  },
+  "dependencies": {
+    "twit": "^2.1.0"
+  },
+  "gh-pages-deploy": {
+    "staticpath": "www",
+    "prep": [
+      "test",
+      "build"
+    ],
+    "noprompt": false
+  },
+  "license": "MIT",
+  "description": "node-module-advent-calendar ----------------",
+  "author": "Cole Willsea <coleww@gmail.com> (http://colewillsea.com/)"
+}

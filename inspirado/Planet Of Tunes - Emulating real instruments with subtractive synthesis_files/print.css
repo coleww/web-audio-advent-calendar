@@ -1,0 +1,57 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* ===== PRINT STYLES ===== */
+ 
+@media print {
+body {
+	background-color: #FFFFFF;
+}
+}
+
+@media print {
+#navigationcontainer {
+  display:none
+}
+}
+
+@media print {
+#navigation {
+  display:none
+}
+}
+
+@media print {
+#shadowcontainer {
+  display:none
+}
+}
+
+@media print {
+#pagetitle {
+	text-align: left;
+	height: 30px;
+	left: 0px;
+	padding-top: 4px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	margin: 0px;
+	visibility: visible;
+	z-index: 8;
+	background-color: #FFFFFF;
+	opacity:1.0;
+	filter: alpha(opacity=100);
+}
+}
+
+@media print {
+#pagetitle h1 {
+	font-size: 24px;
+	color: #000000;
+	letter-spacing: 0px;
+	font-weight: bold;
+	margin: 0px;
+	padding: 0px;
+}
+}

@@ -1,0 +1,209 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* ===== NAVIGATION STYLES ===== */
+
+#indexnavigationcontainer {
+	position: absolute;
+	width: 1000px;
+	padding: 0px;
+	top: 30px;
+	z-index: 6;
+	height: 137px;
+	border-top-width: 0px;
+	border-top-style: solid;
+	border-top-color: #CCCCCC;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	background-repeat: no-repeat;
+	background-image: url(../i_media/nav_bar/navbackground.png);
+	background-position: 21px 0px;
+	left: 0px;
+}
+#navigationcontainer {
+	position: fixed;
+	width: 1000px;
+	padding: 0px;
+	top: 0px;
+	z-index: 6;
+	height: 137px;
+	border-top-width: 0px;
+	border-top-style: solid;
+	border-top-color: #CCCCCC;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	background-repeat: no-repeat;
+	background-image: url(../i_media/nav_bar/navbackground.png);
+	background-position: 21px;
+}
+#navigation {
+	position: absolute;
+	width: 960px;
+	height: 132px;
+	border-bottom-width: 1px;
+	border-bottom-color: #CCCCCC;
+	z-index: 7;
+	margin: 0px;
+	left: 21px;
+	top: 20px;
+	padding: 0px;
+}
+
+#navcolumn1 {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	padding: 0px;
+	width: 250px;
+	height: 78px;
+	margin: 0px;
+}
+#navcolumn1top {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	padding: 8px;
+}
+#navcolumn1bottom {
+	position: absolute;
+	top: 41px;
+	margin: 0px;
+	padding: 8px;
+	width: 240px;
+}
+#submit {
+	cursor: pointer;
+	width: 16px;
+	height: 15px;
+	background-image: url(../i_media/nav_bar/go-search-v2.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+/*#search_box {
+	padding: 0px;
+	margin-top: 0px;
+	z-index: 5;
+	position: relative;
+	float:left;
+}
+#go_search {
+	margin-top: 0px;
+	z-index: 5;
+	position: relative;
+	padding-top: 3px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 2px;
+	float: left;
+}*/
+#navcolumn2, #navcolumn3, #navcolumn4, #navcolumn5, #navcolumn6 {
+	position: absolute;
+	width: 135px;
+	top: 0px;
+	border-left-width: 1px;
+	border-left-style: dotted;
+	border-left-color: #666666;
+	margin-top: 8px;
+	margin-right: 8px;
+	margin-bottom: 8px;
+	margin-left: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 4px;
+	z-index: 7;
+}
+
+#navcolumn2 {
+	right: 548px;
+}
+#navcolumn3 {
+	right: 410px;
+}
+#navcolumn4 {
+	right: 272px;
+}
+#navcolumn5 {
+	right: 138px;
+}
+#navcolumn6 {
+	right: 0px;
+}
+
+#navcolumn2 ul, #navcolumn3 ul, #navcolumn4 ul, #navcolumn5 ul, #navcolumn6 ul  {
+	margin: 0px;
+	padding: 0px;
+}
+#navcolumn2 li, #navcolumn3 li, #navcolumn4 li, #navcolumn5 li, #navcolumn6 li  {
+	padding: 0px;
+	margin: 0px;
+	list-style-type: none;
+}
+#navigation p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	line-height: 16px;
+	margin: 0px;
+	font-weight: normal;
+	font-size: 10px;
+}
+.navheading {
+	font-size: 10px;
+	background-color: #999933;
+	padding: 2px;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 10px;
+	margin: 0px;
+}
+.blanknavheading {
+	font-size: 10px;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 16px;
+	margin: 0px;
+	height: 16px;
+}
+#navigation a {
+	color: #CCCCCC;
+	padding-left: 12px;
+	display: block;
+	text-decoration: none;
+}
+#navcolumn1top a {
+	padding-left: 0px;
+	text-decoration: none;
+}
+#navigation a:hover {
+	color: #FFFFFF;
+	background-repeat: no-repeat;
+	border-bottom-style: none;
+	background-position: 0px 3px;
+/*	background-image: url(../i_media/nav_bar/nav_bullet_hover.gif);*/
+}
+/*#musiclabellink a {
+	font-weight: bold;
+	display: block;
+	background-repeat: no-repeat;
+	background-image: url(../i_media/nav_bar/navmusiclink.jpg);
+	color: #FFFFFF;
+	background-position: 0px 0px;
+}*/
+/*#musiclabellink a:hover {
+	background-image: url(../i_media/nav_bar/navmusiclink_hover.jpg);
+	background-position: 0px 0px;
+}*/
+#navigation img {
+	border: none;
+}
+.google-search-button {
+	float: left;
+}
