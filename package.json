@@ -21,7 +21,6 @@
   "gh-pages-deploy": {
     "staticpath": "www",
     "prep": [
-      "test",
       "build"
     ],
     "noprompt": false
