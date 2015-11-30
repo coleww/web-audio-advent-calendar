@@ -3,6 +3,13 @@ var ac = new AudioContext();
 var range = require('range-inclusive')
 var freqs = [440, 880, 660, 220, 440]// an array of appropriate frequencies for things to play
 
+var hamming = false
+var ham = document.querySelector('.hamburglar')
+document.getElementById('intro').addEventListener('click', function () {
+  ham.style.display = hamming ? 'block' : 'none'
+  hamming = !hamming
+})
+
 var w = window,
     d = document,
     e = d.documentElement,
@@ -51,6 +58,7 @@ Object.keys(dayMap).forEach(function (day) {
         elf.style.opacity = 1
         elf.style.top = e.clientY + 'px'
         elf.style.left = e.clientX + 'px'
+        elf.style.zIndex = 1000
         window.setInterval(function () {
           console.log('boop')
           console.log(elf.style.top)
