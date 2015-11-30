@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "browserify www/demo.js -o www/bundle.js",
+    "build": "browserify index.js -o www/bundle.js",
     "deploy": "git push origin master && gh-pages-deploy",
-    "watch": "watchify www/demo.js -o www/bundle.js --debug --verbose",
+    "watch": "watchify index.js -o www/bundle.js --debug --verbose",
     "tweet": "node bot.js"
   },
   "devDependencies": {
@@ -14,6 +14,8 @@
     "gh-pages-deploy": "^0.3.0"
   },
   "dependencies": {
+    "range-inclusive": "^1.0.1",
+    "tri-tri": "^1.0.3",
     "twit": "^2.1.0"
   },
   "gh-pages-deploy": {

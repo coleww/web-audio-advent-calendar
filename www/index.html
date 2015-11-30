@@ -2,104 +2,272 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>node-module-advent-calendar</title>
+<title>WAADVENT CALENDAR!</title>
 <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-
   <center>
-  <h1>web-audio-synth-module-advent-calendar!!!!</h1>
-  <h2>HEY ITS NOT DECEMBER YET WHY ARE YOU LOOKING AT THIS GO AWAY PLEASE</h2>
-  <h3>each day until xmas i will make a web audio synth based on a <a href="http://www.soundonsound.com/sos/allsynthsecrets.htm">soundonsound</a> article and push it to npm!</h3>
-  <h5>click on a day to open it, and it will play! You might not like the sounds, but it will play!</h5>
-</center>
-<div id="calendar">
-  <div class="daybox" id="day1">
-    1
-  </div>
-  <div class="daybox" id="day2">
-    2
-  </div>
-  <div class="daybox" id="day3">
-    3
-  </div>
-  <div class="daybox" id="day4">
-    4
-  </div>
-  <div class="daybox" id="day5">
-    5
-  </div>
-  <div class="daybox" id="day6">
-    6
-  </div>
-  <div class="daybox" id="day7">
-    7
-  </div>
-  <div class="daybox" id="day8">
-    8
-  </div>
-  <div class="daybox" id="day9">
-    9
-  </div>
-  <div class="daybox" id="day10">
-    10
-  </div>
-  <div class="daybox" id="day11">
-    11
-  </div>
-  <div class="daybox" id="day12">
-    12
-  </div>
-  <div class="daybox" id="day13">
-    13
-  </div>
-  <div class="daybox" id="day14">
-    14
-  </div>
-  <div class="daybox" id="day15">
-    15
-  </div>
-  <div class="daybox" id="day16">
-    16
-  </div>
-  <div class="daybox" id="day17">
-    17
-  </div>
-  <div class="daybox" id="day18">
-    18
-  </div>
-  <div class="daybox" id="day19">
-    19
-  </div>
-  <div class="daybox" id="day20">
-    20
-  </div>
-  <div class="daybox" id="day21">
-    21
-  </div>
-  <div class="daybox" id="day22">
-    22
-  </div>
-  <div class="daybox" id="day23">
-    23
-  </div>
-  <div class="daybox bigbox" id="day24">
-    24
-  </div>
-
-</div>
-
-
-
-
-
+    <h1>WELCOME TO THE WAADVENT CALENDAR!</h1>
+    <h2><a href="https://github.com/wham-js/web-audio-advent-calendar/issues/1">IF YOU WISH TO CONTRIBUTE?</a></h2>
+    <h3>each day thru xmas a browserifiable-connectable-totally-interoperable web audio synthesizer or FX will be published to npm, and a new door will open!</h3>
+    <h4><a href="https://github.com/wham-js/web-audio-synth-template">GRAB THAT SYNTH TEMPLATE, MY GIFT TO YOU!</a></h4>
+    <h5>click on a day to open it, and it will play! You might not like the sounds, but they will play!</h5>
+    <h6>YOU CANNOT CLOSE THE DOORS ONCE YOU HAVE OPENED THEM. I WILL REMEMBER YR COMPUTER.</h6>
+    <a href="https://github.com/coleww/node-module-advent-calendar">FORK THIS</a> /////
+    <a href="http://www.colewillsea.com">by Cole Willsea</a>
+    <br/><br/>
+  </center>
+  <div id="calendar">
+    <div class="daybox" id="day1">
+      1
+    </div>
+    <div class="daybox" id="day2">
+      2
+    </div>
+    <div class="daybox" id="day3">
+      3
+    </div>
+    <div class="daybox" id="day4">
+      4
+    </div>
+    <div class="daybox" id="day5">
+      5
+    </div>
+    <div class="daybox" id="day6">
+      6
+    </div>
+    <div class="daybox" id="day7">
+      7
+    </div>
+    <div class="daybox" id="day8">
+      8
+    </div>
+    <div class="daybox" id="day9">
+      9
+    </div>
+    <div class="daybox" id="day10">
+      10
+    </div>
+    <div class="daybox" id="day11">
+      11
+    </div>
+    <div class="daybox" id="day12">
+      12
+    </div>
+    <div class="daybox" id="day13">
+      13
+    </div>
+    <div class="daybox" id="day14">
+      14
+    </div>
+    <div class="daybox" id="day15">
+      15
+    </div>
+    <div class="daybox" id="day16">
+      16
+    </div>
+    <div class="daybox" id="day17">
+      17
+    </div>
+    <div class="daybox" id="day18">
+      18
+    </div>
+    <div class="daybox" id="day19">
+      19
+    </div>
+    <div class="daybox" id="day20">
+      20
+    </div>
+    <div class="daybox" id="day21">
+      21
+    </div>
+    <div class="daybox" id="day22">
+      22
+    </div>
+    <div class="daybox" id="day23">
+      23
+    </div>
+    <div class="daybox bigbox" id="day24">
+      24
+    </div>
 
 
-
-  <hr/>
-  <a href="https://github.com/coleww/node-module-advent-calendar">FORK THIS</a>
-  <br/><br/>
-  <a href="http://www.colewillsea.com">by Cole Willsea</a>
+    <div id="day1elf" class="elf">
+      <img src="day1elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day2elf" class="elf">
+      <img src="day2elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day3elf" class="elf">
+      <img src="day3elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day4elf" class="elf">
+      <img src="day4elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day5elf" class="elf">
+      <img src="day5elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day6elf" class="elf">
+      <img src="day6elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day7elf" class="elf">
+      <img src="day7elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day8elf" class="elf">
+      <img src="day8elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day9elf" class="elf">
+      <img src="day9elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day10elf" class="elf">
+      <img src="day10elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day11elf" class="elf">
+      <img src="day11elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day12elf" class="elf">
+      <img src="day12elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day13elf" class="elf">
+      <img src="day13elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day14elf" class="elf">
+      <img src="day14elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day15elf" class="elf">
+      <img src="day15elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day16elf" class="elf">
+      <img src="day16elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day17elf" class="elf">
+      <img src="day17elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day18elf" class="elf">
+      <img src="day18elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day19elf" class="elf">
+      <img src="day19elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day20elf" class="elf">
+      <img src="day20elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day21elf" class="elf">
+      <img src="day21elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day22elf" class="elf">
+      <img src="day22elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day23elf" class="elf">
+      <img src="day23elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day24elf" class="elf">
+      <img src="day24elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+    <div id="day25elf" class="elf">
+      <img src="day25elf.gif"></img>
+      <br /><br />
+      <a href="modulelink" class="module-name">modulename</a><br />
+      <a href="authorlink" class="module-author">authorname</a><br />
+      <span class="module-description">description</span>
+    </div>
+  </div>
   <script src="bundle.js"></script>
 </body>
 </html>
