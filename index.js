@@ -1,7 +1,9 @@
-window.AudioContext = window.AudioContext || window.webkitAudioContext;
+window.AudioContext = window.AudioContext || window.webkitAudioContext
 var ac = new AudioContext();
 var range = require('range-inclusive')
-var freqs = [440, 880, 660, 220, 440]// an array of appropriate frequencies for things to play
+var mainfreqs = [261.63, 246.94, 261.63, 220.00, 261.63, 293.66]
+var bassfreqs = [440.00, 392.00, 349.23, 329.63, 440.00, 392.00, 261.63, 246.94]
+var counterfreqs = [261.63, 293.66, 261.63, 329.63, 261.63, 293.66, 261.63, 329.63, 293.66, 261.63]
 
 var hamming = false
 var ham = document.querySelector('.hamburglar')
@@ -22,22 +24,15 @@ var dayMap =  range(25).reduce(function (o, i) {
   return o
 }, {})
 
-var tri = require('tri-tri')(ac)
-tri.connect(ac.destination)
+var pie = require('pie-ano')(ac)
+pie.connect(ac.destination)
 var synths = {
   day1: function () {
     var i = 0
-    tri.volume.gain.value = 0.6
-    tri.root.frequency.setValueAtTime(freqs[i], ac.currentTime)
-    tri.third.frequency.setValueAtTime(freqs[i], ac.currentTime)
-    tri.fifth.frequency.setValueAtTime(freqs[i], ac.currentTime)
-    tri.start(ac.currentTime)
+    pie.start(ac.currentTime)
     window.setInterval(function () {
       i++
-      if (i >= freqs.length) i = 0
-      tri.root.frequency.setValueAtTime(freqs[i], ac.currentTime)
-      tri.third.frequency.setValueAtTime(freqs[i], ac.currentTime)
-      tri.fifth.frequency.setValueAtTime(freqs[i], ac.currentTime)
+      if (i >= bassfreqs.length) i = 0
     }, 1000)
   }
 }
