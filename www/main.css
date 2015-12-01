@@ -53,10 +53,71 @@ body {
 }
 
 .elf {
+  background-color: white;
+  border-radius: 100%;
   opacity: 0;
   z-index: 10000;
   transition: opacity 2s ease-in-out;
   -moz-transition: opacity 2s ease-in-out;
   -webkit-transition: opacity 2s ease-in-out;
   position: absolute;
+  height: 200px;
+  width: 200px;
+
+
+
 }
+
+a:visited.fork {
+    color: red;
+}
+
+a:visited.me {
+    color: green;
+}
+
+a:link.fork {
+    color: green;
+}
+
+a:link.me {
+    color: red;
+}
+
+a:visited.module-name {
+    color: red;
+}
+
+a:visited.module-author {
+    color: green;
+}
+
+a:link.module-name {
+    color: green;
+}
+
+a:link.module-author {
+    color: red;
+}
+
+a:visited.cfc {
+    color: red;
+}
+
+a:visited.tempy {
+    color: green;
+}
+
+a:link.cfc {
+    color: green;
+}
+
+a:link.tempy {
+    color: red;
+}
+
+a:hover {
+    color: hotpink !important;
+}
+
+

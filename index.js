@@ -5,14 +5,7 @@ var mainfreqs = [261.63, 246.94, 261.63, 220.00, 261.63, 293.66]
 var bassfreqs = [440.00, 392.00, 349.23, 329.63, 440.00, 392.00, 261.63, 246.94]
 var counterfreqs = [261.63, 293.66, 261.63, 329.63, 261.63, 293.66, 261.63, 329.63, 293.66, 261.63]
 
-var hamming = false
-var ham = document.querySelector('.hamburglar')
-var theHam = document.querySelector('.theham')
-document.getElementById('intro').addEventListener('click', function () {
-  ham.style.display = hamming ? 'block' : 'none'
-  theHam.style.display = hamming ? 'none' : 'block'
-  hamming = !hamming
-})
+
 
 var w = window,
     d = document,
