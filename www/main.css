@@ -59,5 +59,4 @@ body {
   -moz-transition: opacity 2s ease-in-out;
   -webkit-transition: opacity 2s ease-in-out;
   position: absolute;
-  border: 1px solid red;
 }
