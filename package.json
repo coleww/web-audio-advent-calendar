@@ -11,6 +11,7 @@
   "devDependencies": {
     "adventure-synth": "^2.0.0",
     "browserify": "^11.0.1",
+    "bubble-bass": "^1.0.0",
     "gh-pages-deploy": "^0.3.0",
     "pie-ano": "^1.0.0",
     "watchify": "^3.3.1"

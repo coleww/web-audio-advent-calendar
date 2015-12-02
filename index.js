@@ -36,7 +36,7 @@ var dayMap =  range(25).reduce(function (o, i) {
 }, {})
 
 var volume = ac.createGain()
-volume.gain.value = 0.4
+volume.gain.setValueAtTime(0, ac.currentTime)
 
 var pie = require('pie-ano')(ac)
 pie.connect(volume)
@@ -45,6 +45,9 @@ var Mkas = require('adventure-synth').default
 var adventureSynth = new Mkas(ac)
 adventureSynth.connect(volume)
 
+var bass = require('bubble-bass')(ac)
+bass.connect(volume)
+
 volume.connect(ac.destination)
 
 var synths = {
@@ -52,24 +55,33 @@ var synths = {
     var i = 0
     pie.update({freq: 220}, ac.currentTime)
     window.setInterval(function () {
-      pie.update({freq: bassfreqs[i], attack: 0.5, release: 0.25, decay: 0.25, sustain: 0.5}, ac.currentTime)
+      pie.update({freq: bassfreqs[i], attack: 0.35, release: 0.25, decay: 0.25, sustain: 0.5}, ac.currentTime)
       pie.start(ac.currentTime)
       if (++i >= bassfreqs.length) i = 0
-    }, 975)
+    }, 935)
   },
   day2: function () {
-    var i = 0
+    var j = 0
     adventureSynth.changeFreq(440)
     adventureSynth.start(ac.currentTime)
     var envelop = adventureSynth.nodes().finalGain
     window.setInterval(function () {
-      adventureSynth.changeFreq(bassfreqs[i])
-      envelop.gain.linearRampToValueAtTime(0.85, ac.currentTime + 0.75)
+      adventureSynth.changeFreq(mainfreqs[j])
+      envelop.gain.linearRampToValueAtTime(0.85, ac.currentTime + 0.35)
       window.setTimeout(function () {
-        envelop.gain.linearRampToValueAtTime(0, ac.currentTime + 0.25)
-      }, 745)
-      if (++i >= bassfreqs.length) i = 0
-    }, 1000)
+        envelop.gain.linearRampToValueAtTime(0, ac.currentTime + 0.145)
+      }, 245)
+      if (++j >= mainfreqs.length) j = 0
+    }, 500)
+  },
+  day3: function () {
+    var k = 0
+    pie.update({freq: 220}, ac.currentTime)
+    window.setInterval(function () {
+      pie.update({freq: bassfreqs[k], attack: 0.35, release: 0.25, decay: 0.25, sustain: 0.5}, ac.currentTime)
+      pie.start(ac.currentTime)
+      if (++k >= bassfreqs.length) k = 0
+    }, 1005)
   }
 }
 
@@ -132,3 +144,5 @@ Object.keys(dayMap).forEach(function (day) {
     }
   }
 })
+
+volume.gain.linearRampToValueAtTime(0.4, ac.currentTime + 7.5)
