@@ -5,6 +5,22 @@ var mainfreqs = [261.63, 246.94, 261.63, 220.00, 261.63, 293.66]
 var bassfreqs = [440.00, 392.00, 349.23, 329.63, 440.00, 392.00, 261.63, 246.94]
 var counterfreqs = [261.63, 293.66, 261.63, 329.63, 261.63, 293.66, 261.63, 329.63, 293.66, 261.63]
 
+// HACK FOR IOS DEVICES BECAUSE APPLE IS AWFUL
+function handleIOS() {
+  // create empty buffer
+  var buffer = ac.createBuffer(1, 1, 22050)
+  var source = ac.createBufferSource()
+  source.buffer = buffer
+  // connect to output (your speakers)
+  source.connect(ac.destination)
+  // play the file
+  source.noteOn(0)
+  window.removeEventListener('touchstart', handleIOS, false)
+}
+window.addEventListener('touchstart', handleIOS, false)
+// END OF AWFUL APPLE HACK
+
+
 
 
 var w = window,
