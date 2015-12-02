@@ -101,19 +101,19 @@ a:link.module-author {
     color: red;
 }
 
-a:visited.cfc {
+a:visited.tempy {
     color: red;
 }
 
-a:visited.tempy {
-    color: green;
-}
-
-a:link.cfc {
+a:visited.cfc {
     color: green;
 }
 
 a:link.tempy {
+    color: green;
+}
+
+a:link.cfc {
     color: red;
 }
 
