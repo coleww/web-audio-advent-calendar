@@ -19,19 +19,46 @@ var dayMap =  range(25).reduce(function (o, i) {
   return o
 }, {})
 
+var volume = ac.createGain()
+volume.gain.value = 0.4
+
 var pie = require('pie-ano')(ac)
-pie.connect(ac.destination)
+pie.connect(volume)
+
+var Mkas = require('adventure-synth').default
+var adventureSynth = new Mkas(ac)
+adventureSynth.connect(volume)
+
+volume.connect(ac.destination)
+
 var synths = {
   day1: function () {
     var i = 0
     pie.update({freq: 220}, ac.currentTime)
+    pie.nodes().gain.gain.value = 0.4
     window.setInterval(function () {
       pie.update({freq: bassfreqs[i], attack: 0.5, release: 0.25, decay: 0.25, sustain: 0.3}, ac.currentTime)
       pie.start(ac.currentTime)
       if (++i >= bassfreqs.length) i = 0
+    }, 975)
+  },
+  day2: function () {
+    var i = 0
+    adventureSynth.changeFreq(440)
+    adventureSynth.start(ac.currentTime)
+    var envelop = adventureSynth.nodes().finalGain
+    window.setInterval(function () {
+      adventureSynth.changeFreq(bassfreqs[i])
+      envelop.gain.linearRampToValueAtTime(0.85, ac.currentTime + 0.75)
+      window.setTimeout(function () {
+        envelop.gain.linearRampToValueAtTime(0, ac.currentTime + 0.25)
+      }, 750)
+      if (++i >= bassfreqs.length) i = 0
     }, 1000)
   }
 }
+
+
 
 Object.keys(dayMap).forEach(function (day) {
   console.log(day)
