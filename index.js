@@ -67,7 +67,7 @@ var synths = {
       envelop.gain.linearRampToValueAtTime(0.85, ac.currentTime + 0.75)
       window.setTimeout(function () {
         envelop.gain.linearRampToValueAtTime(0, ac.currentTime + 0.25)
-      }, 750)
+      }, 745)
       if (++i >= bassfreqs.length) i = 0
     }, 1000)
   }
