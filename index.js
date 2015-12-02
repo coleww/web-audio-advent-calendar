@@ -51,9 +51,8 @@ var synths = {
   day1: function () {
     var i = 0
     pie.update({freq: 220}, ac.currentTime)
-    pie.nodes().gain.gain.value = 0.4
     window.setInterval(function () {
-      pie.update({freq: bassfreqs[i], attack: 0.5, release: 0.25, decay: 0.25, sustain: 0.3}, ac.currentTime)
+      pie.update({freq: bassfreqs[i], attack: 0.5, release: 0.25, decay: 0.25, sustain: 0.5}, ac.currentTime)
       pie.start(ac.currentTime)
       if (++i >= bassfreqs.length) i = 0
     }, 975)
