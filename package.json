@@ -25,7 +25,7 @@
     "prep": [
       "build"
     ],
-    "noprompt": false
+    "noprompt": true
   },
   "license": "MIT",
   "description": "node-module-advent-calendar ----------------",
