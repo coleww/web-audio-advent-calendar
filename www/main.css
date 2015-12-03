@@ -61,8 +61,8 @@ body {
   -moz-transition: opacity 2s ease-in-out;
   -webkit-transition: opacity 2s ease-in-out;
   position: absolute;
-  height: 100px;
-  width: 100px;
+  height: 120px;
+  width: 120px;
   font-size: 12px;
 
 
