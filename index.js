@@ -1,6 +1,7 @@
 window.AudioContext = window.AudioContext || window.webkitAudioContext
 var ac = new AudioContext();
 var range = require('range-inclusive')
+var adsr = require('a-d-s-r')
 var mainfreqs = [261.63, 246.94, 261.63, 220.00, 261.63, 293.66]
 var bassfreqs = [440.00, 392.00, 349.23, 329.63, 440.00, 392.00, 261.63, 246.94]
 var counterfreqs = [261.63, 293.66, 261.63, 329.63, 261.63, 293.66, 261.63, 329.63, 293.66, 261.63]
@@ -51,6 +52,11 @@ bass.connect(volume)
 var sparkleMotion = require('sparkle-motion')(ac)
 sparkleMotion.connect(volume)
 
+var triTri = require('tri-tri')(ac)
+triTri.volume.gain.setValueAtTime(0, ac.currentTime)
+triTri.start()
+triTri.connect(volume)
+
 volume.connect(ac.destination)
 
 var synths = {
@@ -58,7 +64,7 @@ var synths = {
     var i = 0
     pie.update({freq: 220}, ac.currentTime)
     window.setInterval(function () {
-      pie.update({freq: bassfreqs[i], attack: 0.35, release: 0.25, decay: 0.25, sustain: 0.75}, ac.currentTime)
+      pie.update({freq: bassfreqs[i], attack: 0.35, release: 0.25, decay: 0.25, sustain: 0.75, peak: 0.3, mid: 0.2, end: 0.0000001}, ac.currentTime)
       pie.start(ac.currentTime)
       if (++i >= bassfreqs.length) i = 0
     }, 1335)
@@ -81,7 +87,7 @@ var synths = {
     var k = 0
     bass.update({freq: 220}, ac.currentTime)
     window.setInterval(function () {
-      bass.update({freq: bassfreqs[k], attack: 0.375, release: 0.115, decay: 0.115, sustain: 0.23}, ac.currentTime)
+      bass.update({freq: bassfreqs[k], attack: 0.375, release: 0.115, decay: 0.115, sustain: 0.23, peak: 0.3, mid: 0.2, end: 0.0000001}, ac.currentTime)
       bass.start(ac.currentTime)
       k++
       if (++k >= bassfreqs.length) k = 0
@@ -91,20 +97,27 @@ var synths = {
     var l = 0
     sparkleMotion.update({freq: 220}, ac.currentTime)
     window.setInterval(function () {
-      console.log('HRY', counterfreqs[l])
-      sparkleMotion.update({freq: counterfreqs[l] / 4, attack: 0.02375175, release: 0.020001, decay: 0.020001, sustain: 0}, ac.currentTime)
+      sparkleMotion.update({freq: counterfreqs[l] / 4, attack: 0.02375175, release: 0.020001, decay: 0.020001, sustain: 0, peak: 0.25, mid: 0.19, end: 0.0001}, ac.currentTime)
       sparkleMotion.start(ac.currentTime)
       if (++l >= counterfreqs.length) l = 0
     }, 1475)
+  },
+  day5: function () {
+    var m = 0
+    window.setInterval(function () {
+      triTri.root.frequency.setValuAtTime(mainfreqs[m], ac.currentTime)
+      triTri.third.frequency.setValuAtTime(mainfreqs[mainfreqs.length - m - 1], ac.currentTime)
+      triTri.fifth.frequency.setValuAtTime(mainfreqs[m], ac.currentTime)
+      adsr(triTri, ac.currentTime, {attack: 0.2375175, release: 0.1120001, decay: 0.1120001, sustain: 0.1, peak: 0.4, mid: 0.3, end: 0.0001})
+      if (++m >= mainfreqs.length) m = 0
+    }, 1275)
   }
 }
 
 
 
 Object.keys(dayMap).forEach(function (day) {
-  console.log(day)
   if (synths[day]) {
-    console.log('doing', day)
     var dayDoor = document.getElementById(day)
     dayDoor.style.borderRadius = '100%'
     if (dayMap[day]) {
@@ -119,8 +132,6 @@ Object.keys(dayMap).forEach(function (day) {
       elf.style.left = rect.left + 'px'
       elf.style.zIndex = 1000
       window.setInterval(function () {
-        console.log('boop')
-        console.log(elf.style.top)
         if (Math.random() < 0.2) elf.style.top = ~~elf.style.top.replace('px', '') + (5 * (~~(Math.random() * 2) - 0.7) ) + 'px'
         if (Math.random() < 0.2) elf.style.left = ~~elf.style.left.replace('px', '') + (5 * (~~(Math.random() * 2) - 0.7) ) + 'px'
         if (elf.style.top < 0) elf.style.top = 0
@@ -131,9 +142,7 @@ Object.keys(dayMap).forEach(function (day) {
       synths[day]()
     } else {
       dayDoor.addEventListener('click', function (e) {
-        console.log(e)
         if (!dayMap[day]) {
-          console.log('init')
           localStorage.setItem(day, true)
           document.getElementById(day).style.opacity = 0
           var elf = document.getElementById(day + 'elf')
@@ -142,8 +151,6 @@ Object.keys(dayMap).forEach(function (day) {
           elf.style.left = e.clientX + 'px'
           elf.style.zIndex = 1000
           window.setInterval(function () {
-            console.log('boop')
-            console.log(elf.style.top)
             if (Math.random() < 0.2) elf.style.top = ~~elf.style.top.replace('px', '') + (5 * (~~(Math.random() * 2) - 0.7) ) + 'px'
             if (Math.random() < 0.2) elf.style.left = ~~elf.style.left.replace('px', '') + (5 * (~~(Math.random() * 2) - 0.7) ) + 'px'
             if (elf.style.top < 0) elf.style.top = 0
