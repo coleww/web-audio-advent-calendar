@@ -9,7 +9,7 @@
     "tweet": "node bot.js"
   },
   "devDependencies": {
-    "a-d-s-r": "^1.0.0",
+    "a-d-s-r": "^1.0.2",
     "adventure-synth": "^2.0.0",
     "browserify": "^11.0.1",
     "bubble-bass": "^1.1.0",

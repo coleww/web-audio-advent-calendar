@@ -64,10 +64,10 @@ var synths = {
     var i = 0
     pie.update({freq: 220}, ac.currentTime)
     window.setInterval(function () {
-      pie.update({freq: bassfreqs[i], attack: 0.35, release: 0.25, decay: 0.25, sustain: 0.75, peak: 0.3, mid: 0.2, end: 0.0000001}, ac.currentTime)
+      pie.update({freq: bassfreqs[i] / 2, attack: 0.1235, release: 0.125, decay: 0.25, sustain: 0.2375, peak: 0.09, mid: 0.05715, end: 0.0000001}, ac.currentTime)
       pie.start(ac.currentTime)
       if (++i >= bassfreqs.length) i = 0
-    }, 1335)
+    }, 1325)
   },
   day2: function () {
     var j = 0
@@ -75,11 +75,8 @@ var synths = {
     adventureSynth.start(ac.currentTime)
     var envelop = adventureSynth.nodes().finalGain
     window.setInterval(function () {
-      adventureSynth.changeFreq(mainfreqs[j])
-      envelop.gain.linearRampToValueAtTime(0.75, ac.currentTime + 0.35)
-      window.setTimeout(function () {
-        envelop.gain.linearRampToValueAtTime(0, ac.currentTime + 0.145)
-      }, 545)
+      adventureSynth.changeFreq(mainfreqs[mainfreqs.length - j - 1])
+      adsr(envelop, ac.currentTime, {attack: 0.3, release: 0.15, decay: 0.15, sustain: 0.1, peak: 0.23, mid: 0.2, end: 0.0000001})
       if (++j >= mainfreqs.length) j = 0
     }, 1570)
   },
@@ -87,30 +84,30 @@ var synths = {
     var k = 0
     bass.update({freq: 220}, ac.currentTime)
     window.setInterval(function () {
-      bass.update({freq: bassfreqs[k], attack: 0.375, release: 0.115, decay: 0.115, sustain: 0.23, peak: 0.3, mid: 0.2, end: 0.0000001}, ac.currentTime)
+      bass.update({freq: bassfreqs[bassfreqs.length - k - 1], attack: 0.1375, release: 0.115, decay: 0.0115, sustain: 0.123, peak: 0.09, mid: 0.12, end: 0.0000001}, ac.currentTime)
       bass.start(ac.currentTime)
       k++
       if (++k >= bassfreqs.length) k = 0
-    }, 1005)
+    }, 1205)
   },
   day4: function () {
     var l = 0
     sparkleMotion.update({freq: 220}, ac.currentTime)
     window.setInterval(function () {
-      sparkleMotion.update({freq: counterfreqs[l] / 4, attack: 0.02375175, release: 0.020001, decay: 0.020001, sustain: 0, peak: 0.25, mid: 0.19, end: 0.0001}, ac.currentTime)
+      sparkleMotion.update({freq: counterfreqs[l], attack: 0.12375175, release: 0.3120001, decay: 0.120001, sustain: 0.15, peak: 0.067, mid: 0.0135, end: 0.00000001}, ac.currentTime)
       sparkleMotion.start(ac.currentTime)
       if (++l >= counterfreqs.length) l = 0
-    }, 1475)
+    }, 1175)
   },
   day5: function () {
     var m = 0
     window.setInterval(function () {
-      triTri.root.frequency.setValuAtTime(mainfreqs[m], ac.currentTime)
-      triTri.third.frequency.setValuAtTime(mainfreqs[mainfreqs.length - m - 1], ac.currentTime)
-      triTri.fifth.frequency.setValuAtTime(mainfreqs[m], ac.currentTime)
-      adsr(triTri, ac.currentTime, {attack: 0.2375175, release: 0.1120001, decay: 0.1120001, sustain: 0.1, peak: 0.4, mid: 0.3, end: 0.0001})
+      triTri.root.frequency.setValueAtTime(mainfreqs[m] * 4, ac.currentTime)
+      triTri.third.frequency.setValueAtTime(mainfreqs[mainfreqs.length - m - 1] * 2, ac.currentTime)
+      triTri.fifth.frequency.setValueAtTime(mainfreqs[m] * 2, ac.currentTime)
+      adsr(triTri.volume, ac.currentTime, {freq: bassfreqs[m] / 2, attack: 0.13, release: 0.15, decay: 0.21, sustain: 0.23, peak: 0.09, mid: 0.05715, end: 0.0000001})
       if (++m >= mainfreqs.length) m = 0
-    }, 1275)
+    }, 1395)
   }
 }
 
