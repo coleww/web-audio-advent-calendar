@@ -48,6 +48,9 @@ adventureSynth.connect(volume)
 var bass = require('bubble-bass')(ac)
 bass.connect(volume)
 
+var sparkleMotion = require('sparkle-motion')(ac)
+sparkleMotion.connect(volume)
+
 volume.connect(ac.destination)
 
 var synths = {
@@ -55,10 +58,10 @@ var synths = {
     var i = 0
     pie.update({freq: 220}, ac.currentTime)
     window.setInterval(function () {
-      pie.update({freq: bassfreqs[i], attack: 0.35, release: 0.25, decay: 0.25, sustain: 0.5}, ac.currentTime)
+      pie.update({freq: bassfreqs[i], attack: 0.35, release: 0.25, decay: 0.25, sustain: 0.75}, ac.currentTime)
       pie.start(ac.currentTime)
       if (++i >= bassfreqs.length) i = 0
-    }, 935)
+    }, 1335)
   },
   day2: function () {
     var j = 0
@@ -67,21 +70,32 @@ var synths = {
     var envelop = adventureSynth.nodes().finalGain
     window.setInterval(function () {
       adventureSynth.changeFreq(mainfreqs[j])
-      envelop.gain.linearRampToValueAtTime(0.85, ac.currentTime + 0.35)
+      envelop.gain.linearRampToValueAtTime(0.75, ac.currentTime + 0.35)
       window.setTimeout(function () {
         envelop.gain.linearRampToValueAtTime(0, ac.currentTime + 0.145)
-      }, 245)
+      }, 545)
       if (++j >= mainfreqs.length) j = 0
-    }, 500)
+    }, 1570)
   },
   day3: function () {
     var k = 0
     bass.update({freq: 220}, ac.currentTime)
     window.setInterval(function () {
-      bass.update({freq: bassfreqs[k], attack: 0.75, release: 0.115, decay: 0.115, sustain: 0.2}, ac.currentTime)
+      bass.update({freq: bassfreqs[k], attack: 0.375, release: 0.115, decay: 0.115, sustain: 0.23}, ac.currentTime)
       bass.start(ac.currentTime)
+      k++
       if (++k >= bassfreqs.length) k = 0
     }, 1005)
+  },
+  day4: function () {
+    var l = 0
+    sparkleMotion.update({freq: 220}, ac.currentTime)
+    window.setInterval(function () {
+      console.log('HRY', counterfreqs[l])
+      sparkleMotion.update({freq: counterfreqs[l] / 4, attack: 0.02375175, release: 0.020001, decay: 0.020001, sustain: 0}, ac.currentTime)
+      sparkleMotion.start(ac.currentTime)
+      if (++l >= counterfreqs.length) l = 0
+    }, 1475)
   }
 }
 
@@ -145,4 +159,4 @@ Object.keys(dayMap).forEach(function (day) {
   }
 })
 
-volume.gain.linearRampToValueAtTime(0.4, ac.currentTime + 7.5)
+volume.gain.linearRampToValueAtTime(0.6, ac.currentTime + 7.5)
