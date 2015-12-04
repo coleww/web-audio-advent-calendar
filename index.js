@@ -107,8 +107,8 @@ Object.keys(dayMap).forEach(function (day) {
       window.setInterval(function () {
         console.log('boop')
         console.log(elf.style.top)
-        elf.style.top = ~~elf.style.top.replace('px', '') + (~~(Math.random() * 3) - 1.5) + 'px'
-        elf.style.left = ~~elf.style.left.replace('px', '') + (~~(Math.random() * 3) - 1.5) + 'px'
+        elf.style.top = ~~elf.style.top.replace('px', '') + (~~(Math.random() * 2) - 1) + 'px'
+        elf.style.left = ~~elf.style.left.replace('px', '') + (~~(Math.random() * 2) - 1) + 'px'
         if (elf.style.top < 0) elf.style.top = 0
         if (elf.style.left < 0) elf.style.left = 0
         if (elf.style.bottom > screeny) elf.style.top = screeny
@@ -130,8 +130,8 @@ Object.keys(dayMap).forEach(function (day) {
           window.setInterval(function () {
             console.log('boop')
             console.log(elf.style.top)
-            elf.style.top = ~~elf.style.top.replace('px', '') + (~~(Math.random() * 3) - 1.5) + 'px'
-            elf.style.left = ~~elf.style.left.replace('px', '') + (~~(Math.random() * 3) - 1.5) + 'px'
+            elf.style.top = ~~elf.style.top.replace('px', '') + (~~(Math.random() * 2) - 1) + 'px'
+            elf.style.left = ~~elf.style.left.replace('px', '') + (~~(Math.random() * 2) - 1) + 'px'
             if (elf.style.top < 0) elf.style.top = 0
             if (elf.style.left < 0) elf.style.left = 0
             if (elf.style.bottom > screeny) elf.style.top = screeny
