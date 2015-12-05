@@ -1,6 +1,7 @@
 window.AudioContext = window.AudioContext || window.webkitAudioContext
 var ac = new AudioContext();
 var range = require('range-inclusive')
+var adsr = require('a-d-s-r')
 var mainfreqs = [261.63, 246.94, 261.63, 220.00, 261.63, 293.66]
 var bassfreqs = [440.00, 392.00, 349.23, 329.63, 440.00, 392.00, 261.63, 246.94]
 var counterfreqs = [261.63, 293.66, 261.63, 329.63, 261.63, 293.66, 261.63, 329.63, 293.66, 261.63]
@@ -51,6 +52,11 @@ bass.connect(volume)
 var sparkleMotion = require('sparkle-motion')(ac)
 sparkleMotion.connect(volume)
 
+var triTri = require('tri-tri')(ac)
+triTri.volume.gain.setValueAtTime(0, ac.currentTime)
+triTri.start()
+triTri.connect(volume)
+
 volume.connect(ac.destination)
 
 var synths = {
@@ -58,10 +64,10 @@ var synths = {
     var i = 0
     pie.update({freq: 220}, ac.currentTime)
     window.setInterval(function () {
-      pie.update({freq: bassfreqs[i], attack: 0.35, release: 0.25, decay: 0.25, sustain: 0.75}, ac.currentTime)
+      pie.update({freq: bassfreqs[i] / 2, attack: 0.1235, release: 0.125, decay: 0.25, sustain: 0.2375, peak: 0.09, mid: 0.05715, end: 0.0000001}, ac.currentTime)
       pie.start(ac.currentTime)
       if (++i >= bassfreqs.length) i = 0
-    }, 1335)
+    }, 1325)
   },
   day2: function () {
     var j = 0
@@ -69,11 +75,8 @@ var synths = {
     adventureSynth.start(ac.currentTime)
     var envelop = adventureSynth.nodes().finalGain
     window.setInterval(function () {
-      adventureSynth.changeFreq(mainfreqs[j])
-      envelop.gain.linearRampToValueAtTime(0.75, ac.currentTime + 0.35)
-      window.setTimeout(function () {
-        envelop.gain.linearRampToValueAtTime(0, ac.currentTime + 0.145)
-      }, 545)
+      adventureSynth.changeFreq(mainfreqs[mainfreqs.length - j - 1])
+      adsr(envelop, ac.currentTime, {attack: 0.3, release: 0.15, decay: 0.15, sustain: 0.1, peak: 0.23, mid: 0.2, end: 0.0000001})
       if (++j >= mainfreqs.length) j = 0
     }, 1570)
   },
@@ -81,30 +84,37 @@ var synths = {
     var k = 0
     bass.update({freq: 220}, ac.currentTime)
     window.setInterval(function () {
-      bass.update({freq: bassfreqs[k], attack: 0.375, release: 0.115, decay: 0.115, sustain: 0.23}, ac.currentTime)
+      bass.update({freq: bassfreqs[bassfreqs.length - k - 1], attack: 0.1375, release: 0.115, decay: 0.0115, sustain: 0.123, peak: 0.09, mid: 0.12, end: 0.0000001}, ac.currentTime)
       bass.start(ac.currentTime)
       k++
       if (++k >= bassfreqs.length) k = 0
-    }, 1005)
+    }, 1205)
   },
   day4: function () {
     var l = 0
     sparkleMotion.update({freq: 220}, ac.currentTime)
     window.setInterval(function () {
-      console.log('HRY', counterfreqs[l])
-      sparkleMotion.update({freq: counterfreqs[l] / 4, attack: 0.02375175, release: 0.020001, decay: 0.020001, sustain: 0}, ac.currentTime)
+      sparkleMotion.update({freq: counterfreqs[l], attack: 0.12375175, release: 0.3120001, decay: 0.120001, sustain: 0.15, peak: 0.067, mid: 0.0135, end: 0.00000001}, ac.currentTime)
       sparkleMotion.start(ac.currentTime)
       if (++l >= counterfreqs.length) l = 0
-    }, 1475)
+    }, 1175)
+  },
+  day5: function () {
+    var m = 0
+    window.setInterval(function () {
+      triTri.root.frequency.setValueAtTime(mainfreqs[m] * 4, ac.currentTime)
+      triTri.third.frequency.setValueAtTime(mainfreqs[mainfreqs.length - m - 1] * 2, ac.currentTime)
+      triTri.fifth.frequency.setValueAtTime(mainfreqs[m] * 2, ac.currentTime)
+      adsr(triTri.volume, ac.currentTime, {freq: bassfreqs[m] / 2, attack: 0.13, release: 0.15, decay: 0.21, sustain: 0.23, peak: 0.09, mid: 0.05715, end: 0.0000001})
+      if (++m >= mainfreqs.length) m = 0
+    }, 1395)
   }
 }
 
 
 
 Object.keys(dayMap).forEach(function (day) {
-  console.log(day)
   if (synths[day]) {
-    console.log('doing', day)
     var dayDoor = document.getElementById(day)
     dayDoor.style.borderRadius = '100%'
     if (dayMap[day]) {
@@ -119,10 +129,8 @@ Object.keys(dayMap).forEach(function (day) {
       elf.style.left = rect.left + 'px'
       elf.style.zIndex = 1000
       window.setInterval(function () {
-        console.log('boop')
-        console.log(elf.style.top)
-        elf.style.top = ~~elf.style.top.replace('px', '') + (~~(Math.random() * 2) - 1) + 'px'
-        elf.style.left = ~~elf.style.left.replace('px', '') + (~~(Math.random() * 2) - 1) + 'px'
+        if (Math.random() < 0.2) elf.style.top = ~~elf.style.top.replace('px', '') + (5 * (~~(Math.random() * 2) - 0.7) ) + 'px'
+        if (Math.random() < 0.2) elf.style.left = ~~elf.style.left.replace('px', '') + (5 * (~~(Math.random() * 2) - 0.7) ) + 'px'
         if (elf.style.top < 0) elf.style.top = 0
         if (elf.style.left < 0) elf.style.left = 0
         if (elf.style.bottom > screeny) elf.style.top = screeny
@@ -131,9 +139,7 @@ Object.keys(dayMap).forEach(function (day) {
       synths[day]()
     } else {
       dayDoor.addEventListener('click', function (e) {
-        console.log(e)
         if (!dayMap[day]) {
-          console.log('init')
           localStorage.setItem(day, true)
           document.getElementById(day).style.opacity = 0
           var elf = document.getElementById(day + 'elf')
@@ -142,10 +148,8 @@ Object.keys(dayMap).forEach(function (day) {
           elf.style.left = e.clientX + 'px'
           elf.style.zIndex = 1000
           window.setInterval(function () {
-            console.log('boop')
-            console.log(elf.style.top)
-            elf.style.top = ~~elf.style.top.replace('px', '') + (~~(Math.random() * 2) - 1) + 'px'
-            elf.style.left = ~~elf.style.left.replace('px', '') + (~~(Math.random() * 2) - 1) + 'px'
+            if (Math.random() < 0.2) elf.style.top = ~~elf.style.top.replace('px', '') + (5 * (~~(Math.random() * 2) - 0.7) ) + 'px'
+            if (Math.random() < 0.2) elf.style.left = ~~elf.style.left.replace('px', '') + (5 * (~~(Math.random() * 2) - 0.7) ) + 'px'
             if (elf.style.top < 0) elf.style.top = 0
             if (elf.style.left < 0) elf.style.left = 0
             if (elf.style.bottom > screeny) elf.style.top = screeny
