@@ -132,6 +132,22 @@ var synths = {
       hat.start(ac.currentTime)
     }, 1300)
   }
+
+
+
+
+  // function () {
+  //   drone-e-o
+  // }
+  // function () {
+  //   run samples thru wobbler?
+  // }
+  // function () {
+  //   wai? hmmm....well, verify it works first. maybe a vocal sample? PHASING YEAH COOL
+  // }
+
+
+
 }
 
 
