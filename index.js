@@ -5,7 +5,8 @@ var adsr = require('a-d-s-r')
 var mainfreqs = [261.63, 246.94, 261.63, 220.00, 261.63, 293.66]
 var bassfreqs = [440.00, 392.00, 349.23, 329.63, 440.00, 392.00, 261.63, 246.94]
 var counterfreqs = [261.63, 293.66, 261.63, 329.63, 261.63, 293.66, 261.63, 329.63, 293.66, 261.63]
-
+var kickfreqs = [100, 120, 100, 100, 110, 100, 115]
+var snarefreqs = []
 // HACK FOR IOS DEVICES BECAUSE APPLE IS AWFUL
 function handleIOS() {
   // create empty buffer
@@ -56,6 +57,9 @@ var triTri = require('tri-tri')(ac)
 triTri.volume.gain.setValueAtTime(0, ac.currentTime)
 triTri.start()
 triTri.connect(volume)
+
+var kicker = require('touch-down-dance')(ac)
+kicker.connect(volume)
 
 volume.connect(ac.destination)
 
@@ -108,6 +112,19 @@ var synths = {
       adsr(triTri.volume, ac.currentTime, {freq: bassfreqs[m] / 2, attack: 0.13, release: 0.15, decay: 0.21, sustain: 0.23, peak: 0.09, mid: 0.05715, end: 0.0000001})
       if (++m >= mainfreqs.length) m = 0
     }, 1395)
+  },
+  day6: function () {
+    var n = 0
+    window.setInterval(function () {
+      kicker.update({freq: kickfreqs[n], peak: 0.7, mid: 0.698})
+      kicker.start(ac.currentTime)
+      if (++n >= mainfreqs.length) n = 0
+    }, 1005)
+
+    window.setInterval(function () {
+      kicker.update({freq: kickfreqs[kickfreqs.length - n], peak: 0.7, mid: 0.698})
+      kicker.start(ac.currentTime)
+    }, 975)
   }
 }
 
