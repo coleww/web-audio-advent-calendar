@@ -5,23 +5,11 @@ var adsr = require('a-d-s-r')
 var mainfreqs = [261.63, 246.94, 261.63, 220.00, 261.63, 293.66]
 var bassfreqs = [440.00, 392.00, 349.23, 329.63, 440.00, 392.00, 261.63, 246.94]
 var counterfreqs = [261.63, 293.66, 261.63, 329.63, 261.63, 293.66, 261.63, 329.63, 293.66, 261.63]
-// HACK FOR IOS DEVICES BECAUSE APPLE IS AWFUL
-function handleIOS() {
-  // create empty buffer
-  var buffer = ac.createBuffer(1, 1, 22050)
-  var source = ac.createBufferSource()
-  source.buffer = buffer
-  // connect to output (your speakers)
-  source.connect(ac.destination)
-  // play the file
-  source.noteOn(0)
-  window.removeEventListener('touchstart', handleIOS, false)
-}
-window.addEventListener('touchstart', handleIOS, false)
-// END OF AWFUL APPLE HACK
+var wai = require('web-audio-ios')
 
-
-
+wai(window, ac, function (unlocked) {
+  console.log('boop\'d yah')
+})
 
 var w = window,
     d = document,
@@ -65,6 +53,9 @@ snaregain.gain.value = 0.13
 snare.connect(snaregain)
 snaregain.connect(volume)
 
+var hat = require('really-hi-hat')(ac)
+hat.connect(volume)
+
 volume.connect(ac.destination)
 
 var synths = {
@@ -79,9 +70,10 @@ var synths = {
   },
   day2: function () {
     var j = 0
+    var envelop = adventureSynth.nodes().finalGain
+    envelop.gain.setValueAtTime(0, ac.currentTime)
     adventureSynth.changeFreq(440)
     adventureSynth.start(ac.currentTime)
-    var envelop = adventureSynth.nodes().finalGain
     window.setInterval(function () {
       adventureSynth.changeFreq(mainfreqs[mainfreqs.length - j - 1])
       adsr(envelop, ac.currentTime, {attack: 0.3, release: 0.15, decay: 0.15, sustain: 0.1, peak: 0.23, mid: 0.2, end: 0.0000001})
@@ -131,13 +123,31 @@ var synths = {
     }, 875)
   },
   day7: function () {
-    var o = 0
     window.setInterval(function () {
       snare.start(ac.currentTime)
-
-      if (++o >= mainfreqs.length) o = 0
-    }, 1200)
+    }, 1150)
+  },
+  day8: function () {
+    window.setInterval(function () {
+      hat.start(ac.currentTime)
+    }, 1300)
   }
+
+
+
+
+  // function () {
+  //   drone-e-o
+  // }
+  // function () {
+  //   run samples thru wobbler?
+  // }
+  // function () {
+  //   wai? hmmm....well, verify it works first. maybe a vocal sample? PHASING YEAH COOL
+  // }
+
+
+
 }
 
 
