@@ -7,7 +7,7 @@ var bassfreqs = [440.00, 392.00, 349.23, 329.63, 440.00, 392.00, 261.63, 246.94]
 var counterfreqs = [261.63, 293.66, 261.63, 329.63, 261.63, 293.66, 261.63, 329.63, 293.66, 261.63]
 var wai = require('web-audio-ios')
 
-wai(window, ac, function (unlocked) {
+wai(document.body, ac, function (unlocked) {
   console.log('boop\'d yah')
 })
 
@@ -131,6 +131,9 @@ var synths = {
     window.setInterval(function () {
       hat.start(ac.currentTime)
     }, 1300)
+  },
+  day9: function () {
+    // LOL NOTHING TAKE THAT!
   }
 
 
