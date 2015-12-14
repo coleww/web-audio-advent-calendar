@@ -53,6 +53,8 @@ snaregain.gain.value = 0.13
 snare.connect(snaregain)
 snaregain.connect(volume)
 
+var clap = require('clappy')(ac);
+
 var hat = require('really-hi-hat')(ac)
 hat.connect(volume)
 
@@ -131,6 +133,16 @@ var synths = {
     window.setInterval(function () {
       hat.start(ac.currentTime)
     }, 1300)
+  },
+  day15: function() {
+    window.setInterval(function() {
+      var clapNode = clap();
+      var clapGain = ac.createGain();
+      clapGain.gain.value = 0.12;
+      clapNode.connect(clapGain);
+      clapGain.connect(volume);
+      clapNode.start(ac.currentTime);
+    }, 1150 * 4);
   }
 
 
