@@ -137,9 +137,21 @@ var synths = {
       hat.start(ac.currentTime)
     }, 1300)
   },
-  day9: function () {
+  day10: function () {
     // LOL NOTHING TAKE THAT!
   },
+  // day11: function () {
+  //   // LOL NOTHING TAKE THAT!
+  // },
+  // day12: function () {
+  //   // LOL NOTHING TAKE THAT!
+  // },
+  // day13: function () {
+  //   // LOL NOTHING TAKE THAT!
+  // },
+  // day14: function () {
+  //   // LOL NOTHING TAKE THAT!
+  // },
   day15: function() {
     window.setInterval(function() {
       var clapNode = clap()
@@ -149,23 +161,43 @@ var synths = {
       clapGain.connect(volume)
       clapNode.start(ac.currentTime)
     }, 1150 * 4)
-  }
+  },
 
+  // day16: function () {
+  //   // LOL NOTHING TAKE THAT!
+  // },
 
+  // day17: function () {
+  //   // LOL NOTHING TAKE THAT!
+  // },
 
+  // day18: function () {
+  //   // LOL NOTHING TAKE THAT!
+  // },
 
+  // day19: function () {
+  //   // LOL NOTHING TAKE THAT!
+  // },
 
-  // function () {
-  //   drone-e-o
+  // day20: function () {
+  //   // LOL NOTHING TAKE THAT!
+  // },
+
+  // day21: function () {
+  //   // LOL NOTHING TAKE THAT!
+  // },
+
+  // day22: function () {
+  //   // LOL NOTHING TAKE THAT!
+  // },
+
+  // day23: function () {
+  //   // LOL NOTHING TAKE THAT!
+  // },
+
+  // day24: function () {
+  //   // LOL NOTHING TAKE THAT!
   // }
-  // function () {
-  //   run samples thru wobbler?
-  // }
-  // function () {
-  //   wai? hmmm....well, verify it works first. maybe a vocal sample? PHASING YEAH COOL
-  // }
-
-
 
 }
 
