@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "a-d-s-r": "^1.0.2",
+    "a-whining-capitalist": "^1.1.0",
     "adventure-synth": "^2.0.0",
     "browserify": "^11.0.1",
     "bubble-bass": "^1.1.0",
@@ -19,8 +20,10 @@
     "random-js": "^1.0.8",
     "really-hi-hat": "^1.0.0",
     "sparkle-motion": "^1.1.0",
+    "tom-from-space": "^1.0.0",
     "touch-down-dance": "^1.0.0",
     "tri-tri": "^1.0.3",
+    "warlock-bass": "^1.0.0",
     "watchify": "^3.3.1",
     "web-audio-ios": "^1.0.2"
   },

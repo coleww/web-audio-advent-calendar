@@ -56,8 +56,11 @@ snaregain.connect(volume)
 var hat = require('really-hi-hat')(ac)
 hat.connect(volume)
 
+var warlock = require('warlock-bass')(ac)
+warlock.connect(volume)
 
-
+var tomTom = require('tom-from-space')(ac)
+tomTom.connect(volume)
 
 var clap = require('clappy')(ac)
 
@@ -137,20 +140,40 @@ var synths = {
       hat.start(ac.currentTime)
     }, 1300)
   },
+  day9: function () {
+    var l = 0
+    window.setInterval(function () {
+      warlock.update({freq: bassfreqs[bassfreqs.length - l - 1]}, ac.currentTime)
+      warlock.start(ac.currentTime)
+      l++
+      if (++l >= bassfreqs.length) l = 0
+    }, 1300)
+  },
   day10: function () {
-    // LOL NOTHING TAKE THAT!
+    window.setInterval(function () {
+      tomTom.update({freq: [150, 125, 250, 200][~~(Math.random() * 4)], endFreq: [135, 225, 175][~~(Math.random() * 3)]})
+      tomTom.start(ac.currentTime)
+    }, 1300)
   },
   // day11: function () {
-  //   // LOL NOTHING TAKE THAT!
+  //   window.setInterval(function () {
+    //   hat.start(ac.currentTime)
+    // }, 1300)
   // },
   // day12: function () {
-  //   // LOL NOTHING TAKE THAT!
+  //   window.setInterval(function () {
+    //   hat.start(ac.currentTime)
+    // }, 1300)
   // },
   // day13: function () {
-  //   // LOL NOTHING TAKE THAT!
+  //   window.setInterval(function () {
+    //   hat.start(ac.currentTime)
+    // }, 1300)
   // },
   // day14: function () {
-  //   // LOL NOTHING TAKE THAT!
+  //   window.setInterval(function () {
+    //   hat.start(ac.currentTime)
+    // }, 1300)
   // },
   day15: function() {
     window.setInterval(function() {
@@ -164,39 +187,57 @@ var synths = {
   },
 
   // day16: function () {
-  //   // LOL NOTHING TAKE THAT!
+  //   window.setInterval(function () {
+    //   hat.start(ac.currentTime)
+    // }, 1300)
   // },
 
   // day17: function () {
-  //   // LOL NOTHING TAKE THAT!
+  //   window.setInterval(function () {
+    //   hat.start(ac.currentTime)
+    // }, 1300)
   // },
 
   // day18: function () {
-  //   // LOL NOTHING TAKE THAT!
+  //   window.setInterval(function () {
+    //   hat.start(ac.currentTime)
+    // }, 1300)
   // },
 
   // day19: function () {
-  //   // LOL NOTHING TAKE THAT!
+  //   window.setInterval(function () {
+    //   hat.start(ac.currentTime)
+    // }, 1300)
   // },
 
   // day20: function () {
-  //   // LOL NOTHING TAKE THAT!
+  //   window.setInterval(function () {
+    //   hat.start(ac.currentTime)
+    // }, 1300)
   // },
 
   // day21: function () {
-  //   // LOL NOTHING TAKE THAT!
+  //   window.setInterval(function () {
+    //   hat.start(ac.currentTime)
+    // }, 1300)
   // },
 
   // day22: function () {
-  //   // LOL NOTHING TAKE THAT!
+  //   window.setInterval(function () {
+    //   hat.start(ac.currentTime)
+    // }, 1300)
   // },
 
   // day23: function () {
-  //   // LOL NOTHING TAKE THAT!
+  //   window.setInterval(function () {
+    //   hat.start(ac.currentTime)
+    // }, 1300)
   // },
 
   // day24: function () {
-  //   // LOL NOTHING TAKE THAT!
+  //   window.setInterval(function () {
+    //   hat.start(ac.currentTime)
+    // }, 1300)
   // }
 
 }
