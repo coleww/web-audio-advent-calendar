@@ -62,6 +62,9 @@ warlock.connect(volume)
 var tomTom = require('tom-from-space')(ac)
 tomTom.connect(volume)
 
+var whiner = require('a-whining-capitalist')(ac)
+whiner.connect(volume)
+
 var clap = require('clappy')(ac)
 
 volume.connect(ac.destination)
@@ -147,19 +150,23 @@ var synths = {
       warlock.start(ac.currentTime)
       l++
       if (++l >= bassfreqs.length) l = 0
-    }, 1300)
+    }, 1050)
   },
   day10: function () {
     window.setInterval(function () {
       tomTom.update({freq: [150, 125, 250, 200][~~(Math.random() * 4)], endFreq: [135, 225, 175][~~(Math.random() * 3)]})
       tomTom.start(ac.currentTime)
-    }, 1300)
+    }, 1700)
   },
-  // day11: function () {
-  //   window.setInterval(function () {
-    //   hat.start(ac.currentTime)
-    // }, 1300)
-  // },
+  day11: function () {
+    var m = 0
+    window.setInterval(function () {
+      warlock.update({freq: counterFreqs[counterFreqs.length - m - 1]}, ac.currentTime)
+      warlock.start(ac.currentTime)
+      m++
+      if (++m >= counterFreqs.length) m = 0
+    }, 1050)
+  },
   // day12: function () {
   //   window.setInterval(function () {
     //   hat.start(ac.currentTime)
