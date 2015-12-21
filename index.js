@@ -155,10 +155,10 @@ var synths = {
   day11: function () {
     var m = 0
     window.setInterval(function () {
-      whiner.update({freq: counterFreqs[counterFreqs.length - m - 1]}, ac.currentTime)
+      whiner.update({freq: counterfreqs[counterfreqs.length - m - 1]}, ac.currentTime)
       whiner.start(ac.currentTime)
       m++
-      if (++m >= counterFreqs.length) m = 0
+      if (++m >= counterfreqs.length) m = 0
     }, 1050)
   },
   day12: function () {
