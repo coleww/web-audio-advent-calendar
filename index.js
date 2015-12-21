@@ -144,13 +144,7 @@ var synths = {
     }, 1300)
   },
   day9: function () {
-    var l = 0
-    window.setInterval(function () {
-      warlock.update({freq: bassfreqs[bassfreqs.length - l - 1]}, ac.currentTime)
-      warlock.start(ac.currentTime)
-      l++
-      if (++l >= bassfreqs.length) l = 0
-    }, 1050)
+    console.log("BOOM fake out")
   },
   day10: function () {
     window.setInterval(function () {
@@ -161,17 +155,21 @@ var synths = {
   day11: function () {
     var m = 0
     window.setInterval(function () {
-      warlock.update({freq: counterFreqs[counterFreqs.length - m - 1]}, ac.currentTime)
-      warlock.start(ac.currentTime)
+      whiner.update({freq: counterFreqs[counterFreqs.length - m - 1]}, ac.currentTime)
+      whiner.start(ac.currentTime)
       m++
       if (++m >= counterFreqs.length) m = 0
     }, 1050)
   },
-  // day12: function () {
-  //   window.setInterval(function () {
-    //   hat.start(ac.currentTime)
-    // }, 1300)
-  // },
+  day12: function () {
+    var l = 0
+    window.setInterval(function () {
+      warlock.update({freq: bassfreqs[bassfreqs.length - l - 1]}, ac.currentTime)
+      warlock.start(ac.currentTime)
+      l++
+      if (++l >= bassfreqs.length) l = 0
+    }, 1050)
+  },
   // day13: function () {
   //   window.setInterval(function () {
     //   hat.start(ac.currentTime)
