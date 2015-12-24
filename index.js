@@ -143,7 +143,7 @@ var synths = {
       hat.start(ac.currentTime)
     }, 1300)
   },
-  day15: function() {
+  day9: function() {
     window.setInterval(function() {
       var clapNode = clap()
       var clapGain = ac.createGain()
