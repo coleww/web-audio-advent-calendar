@@ -1,0 +1,124 @@
+body {
+  background-image: url("bg.jpg");
+  font-family: "Comic Sans MS", cursive, sans-serif
+}
+
+#intro {
+  background-color: white;
+  border: 7px solid red;
+  width: 66%;
+  margin: 0 auto;
+  border-radius: 15%;
+  color: green;
+}
+
+.hidden {
+  display: none;
+}
+
+.full {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#calendar {
+  margin: 0 auto;
+}
+
+.hamburglar {
+  display: none;
+}
+
+.daybox {
+  text-align: center;
+  font-size: 40px;
+  transition: opacity 3s ease-in-out;
+  -moz-transition: opacity 3s ease-in-out;
+  -webkit-transition: opacity 3s ease-in-out;
+  border: 5px solid green;
+  background-color: red;
+  font-size: 75px;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  z-index: 999;
+}
+
+.bigbox {
+  background-color: green;
+  border: 5px solid red;
+}
+
+.elf {
+  background-color: white;
+  border-radius: 100%;
+  opacity: 0;
+  z-index: 10000;
+  transition: opacity 2s ease-in-out;
+  -moz-transition: opacity 2s ease-in-out;
+  -webkit-transition: opacity 2s ease-in-out;
+  position: absolute;
+  height: 120px;
+  width: 120px;
+  font-size: 12px;
+
+
+
+}
+
+a:visited.fork {
+    color: red;
+}
+
+a:visited.me {
+    color: green;
+}
+
+a:link.fork {
+    color: green;
+}
+
+a:link.me {
+    color: red;
+}
+
+a:visited.module-name {
+    color: red;
+}
+
+a:visited.module-author {
+    color: green;
+}
+
+a:link.module-name {
+    color: green;
+}
+
+a:link.module-author {
+    color: red;
+}
+
+a:visited.tempy {
+    color: red;
+}
+
+a:visited.cfc {
+    color: green;
+}
+
+a:link.tempy {
+    color: green;
+}
+
+a:link.cfc {
+    color: red;
+}
+
+a:hover {
+    color: hotpink !important;
+}
+
+
