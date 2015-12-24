@@ -143,8 +143,15 @@ var synths = {
       hat.start(ac.currentTime)
     }, 1300)
   },
-  day9: function () {
-    console.log("BOOM fake out")
+  day15: function() {
+    window.setInterval(function() {
+      var clapNode = clap()
+      var clapGain = ac.createGain()
+      clapGain.gain.value = 0.12
+      clapNode.connect(clapGain)
+      clapGain.connect(volume)
+      clapNode.start(ac.currentTime)
+    }, 1150 * 4)
   },
   day10: function () {
     window.setInterval(function () {
@@ -169,7 +176,7 @@ var synths = {
       l++
       if (++l >= bassfreqs.length) l = 0
     }, 1050)
-  },
+  }
   // day13: function () {
   //   window.setInterval(function () {
     //   hat.start(ac.currentTime)
@@ -180,16 +187,7 @@ var synths = {
     //   hat.start(ac.currentTime)
     // }, 1300)
   // },
-  day15: function() {
-    window.setInterval(function() {
-      var clapNode = clap()
-      var clapGain = ac.createGain()
-      clapGain.gain.value = 0.12
-      clapNode.connect(clapGain)
-      clapGain.connect(volume)
-      clapNode.start(ac.currentTime)
-    }, 1150 * 4)
-  },
+
 
   // day16: function () {
   //   window.setInterval(function () {
